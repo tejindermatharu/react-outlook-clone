@@ -1,8 +1,8 @@
-import React from "react";
+import * as React from "react";
 
 const HelloWorld: React.FC = () => (
     <>
-        <h1>Hello World</h1>
+        <h1>Hello World test</h1>
 
         <hr />
 

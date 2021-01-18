@@ -1,0 +1,28 @@
+@import "../../variables.scss";
+
+.side-bar__container {
+    background-color: $lighter-grey;
+    height: calc(100% - 55px);
+    width: 45px;
+    transition: all 0.5s ease 0s;
+
+    &.expanded {
+        width: 200px;
+    }
+
+    .expand__icon {
+        margin: 5px;
+        display: inline-block;
+        border-radius: 2px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: $light-grey;
+        }
+
+        svg {
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+    }
+}

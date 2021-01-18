@@ -1,3 +1,24 @@
+@import "../../variables.scss";
+
 .search__container {
-    background-color: aqua;
+    background-color: $light-blue;
+    padding: 8px 15px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    width: 300px;
+
+    &.focused {
+        background-color: white;
+    }
+
+    .search__icon {
+        margin-right: 10px;
+    }
+
+    .search__input {
+        border: none;
+        outline: none;
+        background-color: inherit;
+    }
 }

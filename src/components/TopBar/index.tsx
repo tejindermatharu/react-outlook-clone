@@ -5,7 +5,7 @@ import "./style.scss";
 function TopBar(props) {
     return (
         <div className="top-bar__container">
-            <span>Outlook</span>
+            <span className="outlook__span">Outlook</span>
             <SearchBar />
         </div>
     );

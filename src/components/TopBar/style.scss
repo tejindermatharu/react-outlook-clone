@@ -1,3 +1,11 @@
+@import "../../variables.scss";
+
 .top-bar__container {
     display: flex;
+    background-color: $primary-blue;
+    padding: 8px;
+
+    .outlook__span {
+        margin-right: 150px;
+    }
 }

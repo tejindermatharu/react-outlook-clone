@@ -1,10 +1,11 @@
 @import "../../variables.scss";
 
 .side-bar__container {
+    display: inline-block;
     background-color: $lighter-grey;
-    height: calc(100% - 55px);
     width: 45px;
-    transition: all 0.5s ease 0s;
+    height: 100%;
+    transition: all 0.1s ease 0s;
 
     &.expanded {
         width: 200px;
@@ -21,8 +22,32 @@
         }
 
         svg {
-            padding: 5px 10px;
+            padding: 3px 5px;
             cursor: pointer;
+        }
+    }
+
+    .mail__list {
+        ul {
+            padding: 5px 0;
+        }
+
+        .mail-items__list {
+            list-style: none;
+            display: flex;
+            align-items: center;
+            height: 30px;
+            padding: 0 20px;
+            cursor: pointer;
+
+            svg {
+                width: 20px;
+                margin-right: 20px;
+            }
+
+            &:hover {
+                background-color: $light-grey;
+            }
         }
     }
 }

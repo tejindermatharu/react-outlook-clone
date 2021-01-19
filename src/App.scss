@@ -1,12 +1,29 @@
+* {
+    margin: 0;
+}
+
 html {
     height: 100%;
 }
 
 body {
-    margin: 0;
     height: 100%;
 }
 
 #root {
     height: 100%;
+}
+
+.app__body {
+    height: calc(100% - 55px);
+}
+
+.mail__container {
+    display: inline-block;
+    position: absolute;
+    height: calc(100% - 55px);
+}
+
+.btn {
+    text-transform: unset !important;
 }

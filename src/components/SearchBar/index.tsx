@@ -1,6 +1,6 @@
 import React, {useState} from "react";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faSearch} from "@fortawesome/free-solid-svg-icons";
+import SearchIcon from "@material-ui/icons/Search";
+
 import "./style.scss";
 
 function SearchBar() {
@@ -13,9 +13,9 @@ function SearchBar() {
             onBlur={() => setIsFocused(false)}
         >
             {!isFocused && (
-                <span className="search__icon">
-                    <FontAwesomeIcon color="#0078d4" icon={faSearch} />
-                </span>
+                <div className="search__icon">
+                    <SearchIcon className="search-icon__icon" />
+                </div>
             )}
             <input className="search__input" placeholder="Search"></input>
         </div>

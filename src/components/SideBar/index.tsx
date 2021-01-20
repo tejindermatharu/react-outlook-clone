@@ -24,7 +24,7 @@ function SideBar(props) {
                 <MenuIcon />
             </span>
             {isExpanded && (
-                <Button className="btn" variant="contained" color="primary">
+                <Button className="new-message__button btn" variant="contained" color="primary">
                     New Message
                 </Button>
             )}

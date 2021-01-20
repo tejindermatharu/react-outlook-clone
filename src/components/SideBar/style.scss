@@ -11,6 +11,11 @@
         width: 200px;
     }
 
+    .new-message__button {
+        top: -10px;
+        background-color: $primary-blue;
+    }
+
     .expand__icon {
         margin: 5px;
         display: inline-block;

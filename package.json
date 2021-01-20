@@ -16,9 +16,12 @@
     "lint:fix": "eslint './src/**/*.{ts,tsx}' --fix"
   },
   "devDependencies": {
+    "@reduxjs/toolkit": "^1.5.0",
     "@types/node": "13.13.40",
     "@types/react": "16.14.2",
     "@types/react-dom": "16.9.10",
+    "@types/react-redux": "^7.1.15",
+    "@types/redux": "^3.6.0",
     "@types/webpack": "4.41.26",
     "@types/webpack-dev-server": "3.11.1",
     "@typescript-eslint/eslint-plugin": "4.13.0",
@@ -55,8 +58,10 @@
     "@material-ui/icons": "^4.11.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-redux": "^7.2.2",
     "react-router": "^5.2.0",
-    "react-router-dom": "^5.2.0"
+    "react-router-dom": "^5.2.0",
+    "redux": "^4.0.5"
   },
   "bugs": {
     "url": "https://github.com/GR34SE/react-typescript-starter/issues"

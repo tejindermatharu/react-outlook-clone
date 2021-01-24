@@ -1,9 +1,8 @@
 import React from "react";
 import {useSelector} from "react-redux";
-import {selectCount} from "src/reducers/mailReducer";
 
 function Mail(props) {
-    const count = useSelector(selectCount);
+    const count = useSelector((state: any) => state.mail.counter);
 
     return (
         <div>

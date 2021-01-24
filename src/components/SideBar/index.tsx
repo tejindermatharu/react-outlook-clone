@@ -4,6 +4,9 @@ import MenuIcon from "@material-ui/icons/Menu";
 import SendIcon from "@material-ui/icons/Send";
 import "./style.scss";
 import Button from "@material-ui/core/Button";
+import {useDispatch} from "react-redux";
+import {SAMPLE_ACTION_TYPE} from "../../actions/actionTypes";
+import {sampleActionCreator} from "src/actions/mailActions";
 
 interface IMailFolders {
     name: string;
@@ -17,6 +20,7 @@ const SideBarItems: Array<IMailFolders> = [
 
 function SideBar(props) {
     const [isExpanded, setIsExpanded] = useState<boolean>(false);
+    const dispatch = useDispatch();
 
     return (
         <div className={`side-bar__container ${isExpanded ? "expanded" : ""}`}>
@@ -24,7 +28,12 @@ function SideBar(props) {
                 <MenuIcon />
             </span>
             {isExpanded && (
-                <Button className="new-message__button btn" variant="contained" color="primary">
+                <Button
+                    className="new-message__button btn"
+                    variant="contained"
+                    color="primary"
+                    onClick={() => dispatch(sampleActionCreator(5))}
+                >
                     New Message
                 </Button>
             )}

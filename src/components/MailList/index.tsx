@@ -1,6 +1,6 @@
 import React from "react";
 
-function MailList(props) {
+function MailList() {
     return <div>maillist</div>;
 }
 

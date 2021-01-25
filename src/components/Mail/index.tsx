@@ -1,13 +1,16 @@
 import React from "react";
 import {useSelector} from "react-redux";
 
-function Mail(props) {
-    const count = useSelector((state: any) => state.mail.counter);
+function Mail() {
+    const mail = useSelector((state: any) => state.mail.mail);
 
     return (
         <div>
             <span>mail count:</span>
-            <span>{count}</span>
+            {mail &&
+                mail.map((m) => {
+                    return <span key={m.id}>{m.title}</span>;
+                })}
         </div>
     );
 }

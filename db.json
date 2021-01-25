@@ -1,0 +1,8 @@
+{
+    "mail": [
+        {"id": 1, "title": "test1", "author": "typicode"},
+        {"id": 2, "title": "test2", "author": "testing"}
+    ],
+    "comments": [{"id": 1, "body": "some comment", "postId": 1}],
+    "profile": {"name": "typicode"}
+}

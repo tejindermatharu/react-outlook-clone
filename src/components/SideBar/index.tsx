@@ -5,8 +5,7 @@ import SendIcon from "@material-ui/icons/Send";
 import "./style.scss";
 import Button from "@material-ui/core/Button";
 import {useDispatch} from "react-redux";
-import {SAMPLE_ACTION_TYPE} from "../../actions/actionTypes";
-import {sampleActionCreator} from "src/actions/mailActions";
+import {mailActionCreator} from "src/actions/mailActions";
 
 interface IMailFolders {
     name: string;
@@ -18,7 +17,7 @@ const SideBarItems: Array<IMailFolders> = [
     {name: "Sent", icon: <SendIcon />}
 ];
 
-function SideBar(props) {
+function SideBar() {
     const [isExpanded, setIsExpanded] = useState<boolean>(false);
     const dispatch = useDispatch();
 
@@ -32,7 +31,7 @@ function SideBar(props) {
                     className="new-message__button btn"
                     variant="contained"
                     color="primary"
-                    onClick={() => dispatch(sampleActionCreator(5))}
+                    onClick={() => dispatch(mailActionCreator())}
                 >
                     New Message
                 </Button>

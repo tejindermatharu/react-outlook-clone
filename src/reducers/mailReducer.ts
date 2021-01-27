@@ -1,21 +1,20 @@
 import {MAIL_ACTIONS} from "../actions/actionTypes";
+import {IMailItems} from "./../lib/types/mail";
 
-const initialState = {
-    counter: 0,
-    mail: null
+type MailState = {
+    mailItems: Array<IMailItems>;
+};
+
+const initialState: MailState = {
+    mailItems: []
 };
 
 export default function mailReducer(state = initialState, action) {
-    let newState;
+    let newState: MailState;
     switch (action.type) {
-        //add your cases according to action types
-        case MAIL_ACTIONS.SAMPLE_ACTION_TYPE:
-            newState = {...state};
-            newState.counter = newState.counter + action.val;
-            return newState;
         case MAIL_ACTIONS.MAIL_RECEIVED:
             newState = {...state};
-            newState.mail = action.val;
+            newState.mailItems = action.val;
             return newState;
         default:
             return state;

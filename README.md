@@ -13,4 +13,5 @@ TODO's
 
 1. Error Boundaries
 2. Suspense?
-3. Redux middleware eg thunk
+3. Redux middleware eg logging
+4. Lazy loading bundles

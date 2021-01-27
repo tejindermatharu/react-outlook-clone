@@ -3,7 +3,9 @@ import SearchIcon from "@material-ui/icons/Search";
 
 import "./style.scss";
 
-function SearchBar() {
+type SearchBarProps = {};
+
+const SearchBar: React.FC<SearchBarProps> = () => {
     const [isFocused, setIsFocused] = useState<boolean>(false);
 
     return (
@@ -20,6 +22,6 @@ function SearchBar() {
             <input className="search__input" placeholder="Search"></input>
         </div>
     );
-}
+};
 
 export default SearchBar;

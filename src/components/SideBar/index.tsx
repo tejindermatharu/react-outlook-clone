@@ -6,15 +6,17 @@ import "./style.scss";
 import Button from "@material-ui/core/Button";
 import {useDispatch} from "react-redux";
 import {mailActionCreator} from "src/actions/mailActions";
+import {MailType} from "src/lib/types/mail";
 
 interface IMailFolders {
+    mailType: MailType;
     name: string;
     icon: unknown;
 }
 
 const SideBarItems: Array<IMailFolders> = [
-    {name: "Inbox", icon: <InboxIcon />},
-    {name: "Sent", icon: <SendIcon />}
+    {mailType: MailType.INBOX, name: "Inbox", icon: <InboxIcon />},
+    {mailType: MailType.SENT, name: "Sent", icon: <SendIcon />}
 ];
 
 function SideBar() {

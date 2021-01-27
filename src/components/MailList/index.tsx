@@ -1,7 +1,11 @@
 import React from "react";
 
-function MailList() {
-    return <div>maillist</div>;
-}
+type MailProps = {
+    test: string;
+};
+
+const MailList: React.FC<MailProps> = ({test}) => {
+    return <div>{test}</div>;
+};
 
 export default MailList;

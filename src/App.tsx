@@ -15,7 +15,7 @@ const App: React.FC = () => {
                     <div className="mail__container">
                         <Switch>
                             <Route path="/maillist">
-                                <MailList />
+                                <MailList test="mail list" />
                             </Route>
                             <Route path="/">
                                 <Mail />

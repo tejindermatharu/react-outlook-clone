@@ -1,7 +1,26 @@
 {
     "mail": [
-        {"id": 1, "title": "test1", "author": "typicode"},
-        {"id": 2, "title": "test2", "author": "testing"}
+        {
+            "id": 1,
+            "mailType": 1,
+            "from": "support@playstation.com",
+            "name": "playstation",
+            "subject": "support ticket"
+        },
+        {
+            "id": 2,
+            "mailType": 1,
+            "from": "order-update@amazon.co.uk",
+            "name": "Amazon",
+            "subject": "amazon delivered"
+        },
+        {
+            "id": 3,
+            "mailType": 2,
+            "from": "order-update@amazon.co.uk",
+            "name": "Amazon",
+            "subject": "Thanks you for you purchase"
+        }
     ],
     "comments": [{"id": 1, "body": "some comment", "postId": 1}],
     "profile": {"name": "typicode"}

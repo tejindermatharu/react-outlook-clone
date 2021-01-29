@@ -1,0 +1,52 @@
+@import "../../variables.scss";
+
+.mail__header {
+    height: 50px;
+    border-bottom: 1px solid $light-grey;
+
+    .mail-type__label {
+        display: inline-block;
+        padding: 10px;
+        margin-left: 20px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-weight: 300;
+        font-size: 20px;
+    }
+}
+
+.mail__list {
+    padding: 0;
+
+    .mail-row__container {
+        height: 40px;
+        border-bottom: 1px solid $light-grey;
+        align-items: center;
+        display: flex;
+        padding-left: 40px;
+
+        span {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .mail-edit__buttons {
+            cursor: pointer;
+            opacity: 0;
+        }
+
+        &:hover {
+            background-color: $medium-grey;
+        }
+
+        &:hover .mail-edit__buttons {
+            opacity: 1;
+        }
+
+        .name__label {
+            width: 20%;
+        }
+    }
+}

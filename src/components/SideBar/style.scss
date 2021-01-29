@@ -50,6 +50,10 @@
                 margin-right: 20px;
             }
 
+            &.highlight__list-item {
+                background-color: $light-blue;
+            }
+
             &:hover {
                 background-color: $light-grey;
             }

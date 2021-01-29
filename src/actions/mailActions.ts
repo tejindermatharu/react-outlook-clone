@@ -1,5 +1,7 @@
 import axios from "axios";
-import {MAIL_ACTIONS} from "./actionTypes";
+import {MAIL_ACTIONS, GLOBAL_ACTIONS, makeRequestSuccess} from "./actionTypes";
+import {IMailItem, MailType} from "src/lib/types/mail";
+import {Action} from "redux";
 
 export function sampleActionCreator(updateVal: number) {
     return function (dispatch) {
@@ -11,17 +13,36 @@ export function sampleActionCreator(updateVal: number) {
     };
 }
 
-export function mailActionCreator() {
+export function mailActionCreator(mailType: MailType) {
     return async (dispatch) => {
         try {
             const mail = await axios.get("http://localhost:4000/mail");
+            const data =
+                mail?.data.length > 0 ? mail?.data.filter((m) => m.mailType === mailType) : [];
 
             dispatch({
                 type: MAIL_ACTIONS.MAIL_RECEIVED,
-                val: mail.data
-            });
+                asyncPayload: makeRequestSuccess(data as IMailItem)
+            } as Action);
         } catch (error) {
             console.log(error);
         }
     };
 }
+
+export function mailFolderChange(mailType: MailType) {
+    return (dispatch) => {
+        dispatch({
+            type: GLOBAL_ACTIONS.SELECTED_FOLDER,
+            val: mailType
+        });
+        try {
+            dispatch(mailActionCreator(mailType));
+        } catch (error) {
+            console.log(error);
+        }
+    };
+}
+
+//https://codesandbox.io/s/react-using-json-server-3uupl?file=/src/App.js
+//https://medium.com/codingthesmartway-com-blog/create-a-rest-api-with-json-server-36da8680136d

@@ -3,7 +3,7 @@ import {BrowserRouter as Router, Switch, Route, Link} from "react-router-dom";
 import TopBar from "./components/TopBar/index";
 import SideBar from "components/SideBar";
 import Mail from "./components/Mail";
-import MailList from "./components/MailList";
+import MailDetail from "./components/MailDetail";
 
 const App: React.FC = () => {
     return (
@@ -14,8 +14,11 @@ const App: React.FC = () => {
                     <SideBar />
                     <div className="mail__container">
                         <Switch>
-                            <Route path="/maillist">
-                                <MailList test="mail list" />
+                            <Route path="/maildetail">
+                                <MailDetail test="mail list" />
+                            </Route>
+                            <Route path="/mail">
+                                <Mail />
                             </Route>
                             <Route path="/">
                                 <Mail />

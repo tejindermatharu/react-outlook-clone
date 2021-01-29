@@ -18,7 +18,7 @@
             "id": 3,
             "mailType": 2,
             "from": "order-update@amazon.co.uk",
-            "name": "Amazon",
+            "name": "donotreply-update@amazon.co.uk",
             "subject": "Thanks you for you purchase"
         }
     ],

@@ -4,11 +4,11 @@ import {useSelector, useDispatch} from "react-redux";
 import DeleteOutline from "@material-ui/icons/DeleteOutline";
 import {IMailItem, MailTypeMap} from "src/lib/types/mail";
 import {RootState} from "src/reducers";
-import {MAIL_ACTIONS} from "src/actions/actionTypes";
+import {MAIL_ACTIONS, PENDING} from "src/actions/actionTypes";
 import "./style.scss";
 
 function Mail() {
-    const mailItems = useSelector((state: any) => state.mail.mailItems?.payload);
+    const {mailItems, mailData} = useSelector((state: RootState) => state.mail);
     const selectedFolder = useSelector((state: RootState) => state.common.selectedFolder);
     const dispatch = useDispatch();
     const history = useHistory();
@@ -43,12 +43,16 @@ function Mail() {
             <div className="mail__header">
                 <span className="mail-type__label">{MailTypeMap.get(selectedFolder).name}</span>
             </div>
-            <ul className="mail__list">
-                {mailItems &&
-                    mailItems.map((m) => {
-                        return renderMailRow(m);
-                    })}
-            </ul>
+            {mailData?.status === PENDING ? (
+                <div>loading</div>
+            ) : (
+                <ul className="mail__list">
+                    {mailItems &&
+                        mailItems.map((m) => {
+                            return renderMailRow(m);
+                        })}
+                </ul>
+            )}
         </div>
     );
 }

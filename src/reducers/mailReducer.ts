@@ -1,18 +1,18 @@
-import {AysncPayload, MAIL_ACTIONS, SUCCESS} from "../actions/actionTypes";
+import {ASYNC_STATUS, INITIAL, MAIL_ACTIONS, SUCCESS} from "../actions/actionTypes";
 import {IMailItem} from "./../lib/types/mail";
 import {PENDING, ERROR} from "./../actions/actionTypes";
 import {MailActions} from "src/actions/mailActions";
 
 type MailState = {
     mailItems: IMailItem[];
-    mailData: AysncPayload<IMailItem[]>;
+    mailStatus: ASYNC_STATUS;
     selectedMail: IMailItem;
 };
 
 const initialState: MailState = {
     mailItems: null,
     selectedMail: null,
-    mailData: null
+    mailStatus: INITIAL
 };
 
 function processMailAction(state: MailState, action: MailActions) {
@@ -22,12 +22,12 @@ function processMailAction(state: MailState, action: MailActions) {
         case SUCCESS:
             newState = {...state};
             newState.mailItems = action.asyncPayload.payload;
-            newState.mailData = action.asyncPayload;
+            newState.mailStatus = action.asyncPayload.status;
             break;
         case PENDING:
         case ERROR:
             newState = {...state};
-            newState.mailData = action.asyncPayload;
+            newState.mailStatus = action.asyncPayload.status;
             break;
         default:
             break;

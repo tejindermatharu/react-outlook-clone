@@ -1,0 +1,12 @@
+@import "../../variables.scss";
+
+.mail__form {
+    .mail-form__input {
+        display: block;
+        width: 100%;
+        border: none;
+        outline: none;
+        border-bottom: 1px solid $light-grey;
+        height: 50px;
+    }
+}

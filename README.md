@@ -15,3 +15,4 @@ TODO's
 2. Suspense?
 3. Redux middleware eg logging
 4. Lazy loading bundles
+5. UseMemo, UseCallback

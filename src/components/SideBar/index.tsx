@@ -4,13 +4,13 @@ import classNames from "classnames";
 import InboxIcon from "@material-ui/icons/Inbox";
 import MenuIcon from "@material-ui/icons/Menu";
 import SendIcon from "@material-ui/icons/Send";
-import "./style.scss";
 import Button from "@material-ui/core/Button";
 import {useDispatch, useSelector} from "react-redux";
 import {mailActionCreator, mailFolderChange} from "src/actions/mailActions";
 import {MailType} from "src/lib/types/mail";
 import {GLOBAL_ACTIONS} from "src/actions/actionTypes";
 import {RootState} from "src/reducers";
+import "./style.scss";
 
 interface IMailFolders {
     mailType: MailType;
@@ -44,7 +44,12 @@ function SideBar() {
                 <MenuIcon />
             </span>
             {isExpanded && (
-                <Button className="new-message__button btn" variant="contained" color="primary">
+                <Button
+                    className="new-message__button btn"
+                    variant="contained"
+                    color="primary"
+                    onClick={() => history.push("/mailform")}
+                >
                     New Message
                 </Button>
             )}

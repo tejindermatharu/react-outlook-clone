@@ -4,6 +4,7 @@ import TopBar from "./components/TopBar/index";
 import SideBar from "components/SideBar";
 import Mail from "./components/Mail";
 import MailDetail from "./components/MailDetail";
+import MailForm from "components/MailForm";
 
 const App: React.FC = () => {
     return (
@@ -16,6 +17,9 @@ const App: React.FC = () => {
                         <Switch>
                             <Route path="/maildetail">
                                 <MailDetail test="mail list" />
+                            </Route>
+                            <Route path="/mailform">
+                                <MailForm />
                             </Route>
                             <Route path="/mail">
                                 <Mail />

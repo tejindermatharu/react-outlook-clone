@@ -8,7 +8,7 @@ import {MAIL_ACTIONS, PENDING} from "src/actions/actionTypes";
 import "./style.scss";
 
 function Mail() {
-    const {mailItems, mailData} = useSelector((state: RootState) => state.mail);
+    const {mailItems, mailStatus} = useSelector((state: RootState) => state.mail);
     const selectedFolder = useSelector((state: RootState) => state.common.selectedFolder);
     const dispatch = useDispatch();
     const history = useHistory();
@@ -43,7 +43,7 @@ function Mail() {
             <div className="mail__header">
                 <span className="mail-type__label">{MailTypeMap.get(selectedFolder).name}</span>
             </div>
-            {mailData?.status === PENDING ? (
+            {mailStatus === PENDING ? (
                 <div>loading</div>
             ) : (
                 <ul className="mail__list">

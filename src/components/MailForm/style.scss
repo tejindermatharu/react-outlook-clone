@@ -1,12 +1,59 @@
 @import "../../variables.scss";
 
-.mail__form {
-    .mail-form__input {
-        display: block;
-        width: 100%;
-        border: none;
-        outline: none;
-        border-bottom: 1px solid $light-grey;
-        height: 50px;
+.mail-form__container {
+    .mail-form__form {
+        .errors__span {
+            display: block;
+            height: 30px;
+            line-height: 30px;
+            padding-left: 10px;
+            width: 100%;
+            border-bottom: 1px solid $light-grey;
+        }
+        .mail-form__header {
+            height: 45px;
+            width: 100%;
+            background-color: $lighter-grey;
+
+            .header__buttton {
+                border: none;
+                width: 70px;
+                height: 35px;
+                margin-top: 5px;
+                color: $primary-blue;
+                &:hover {
+                    background-color: $light-grey;
+                }
+            }
+        }
+
+        .mailto__input {
+            display: flex;
+            padding-left: 10px;
+            align-items: center;
+            border-bottom: 1px solid $light-grey;
+
+            .mailto__button {
+                background-color: $lighter-blue;
+                height: 32px;
+            }
+        }
+
+        .mail__text-area {
+            border-top: 1px solid $light-grey;
+        }
+
+        .mail-form__input {
+            display: block;
+            padding-left: 10px;
+            width: 100%;
+            border: none;
+            outline: none;
+            height: 50px;
+            &.text-area {
+                height: 400px;
+                overflow-y: scroll;
+            }
+        }
     }
 }

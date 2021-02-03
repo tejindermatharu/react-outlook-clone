@@ -1,42 +1,14 @@
-import React, {useEffect, useState} from "react";
-import {useHistory} from "react-router-dom";
-import {useSelector, useDispatch} from "react-redux";
-import DeleteOutline from "@material-ui/icons/DeleteOutline";
-import {IMailItem, MailTypeMap} from "src/lib/types/mail";
+import React from "react";
+import {useSelector} from "react-redux";
+import {MailTypeMap} from "src/lib/types/mail";
 import {RootState} from "src/reducers";
-import {MAIL_ACTIONS, PENDING} from "src/actions/actionTypes";
+import {PENDING} from "src/actions/actionTypes";
 import "./style.scss";
+import MailItemRow from "components/MailItemRow";
 
 function Mail() {
     const {mailItems, mailStatus} = useSelector((state: RootState) => state.mail);
     const selectedFolder = useSelector((state: RootState) => state.common.selectedFolder);
-    const dispatch = useDispatch();
-    const history = useHistory();
-
-    const onMailItemClick = (mailItem: IMailItem) => {
-        dispatch({type: MAIL_ACTIONS.SELECTED_MAIL, payload: mailItem});
-        history.push("/maildetail");
-    };
-
-    const onMailDeleteClick = (e: any, id: number) => {
-        e.stopPropagation();
-    };
-
-    const renderMailRow = (mailItem: IMailItem) => {
-        return (
-            <li
-                key={mailItem.id}
-                className="mail-row__container"
-                onClick={() => onMailItemClick(mailItem)}
-            >
-                <span className="name__label">{mailItem.name}</span>
-                <span className="mail-edit__buttons">
-                    <DeleteOutline onClick={(e) => onMailDeleteClick(e, mailItem.id)} />
-                </span>
-                <span className="subject__label">{mailItem.subject}</span>
-            </li>
-        );
-    };
 
     return (
         <div>
@@ -49,7 +21,7 @@ function Mail() {
                 <ul className="mail__list">
                     {mailItems &&
                         mailItems.map((m) => {
-                            return renderMailRow(m);
+                            return <MailItemRow key={m.id} mailItem={m} />;
                         })}
                 </ul>
             )}

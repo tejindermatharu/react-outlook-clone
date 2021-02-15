@@ -6,7 +6,7 @@ import {
     makeRequestPending,
     AysncPayload
 } from "./actionTypes";
-import {IMailItem, MailType} from "src/lib/types/mail";
+import {IMailItem, IMailSendItem, MailType} from "src/lib/types/mail";
 import {Action} from "redux";
 
 export interface IMailReceived extends Action {
@@ -38,6 +38,29 @@ export function mailActionCreator(mailType: MailType) {
             dispatch({
                 type: MAIL_ACTIONS.MAIL_RECEIVED,
                 asyncPayload: makeRequestSuccess(data as IMailItem)
+            } as Action);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+}
+
+export function newMail(mailSentItem: IMailSendItem) {
+    return async (dispatch) => {
+        // dispatch({
+        //     type: MAIL_ACTIONS.MAIL_RECEIVED,
+        //     asyncPayload: makeRequestPending()
+        // } as Action);
+
+        const mailItem: IMailItem = {...mailSentItem, mailType: MailType.SENT, id: 100};
+
+        try {
+            await axios.post("http://localhost:4000/mail", JSON.stringify(mailItem), {
+                headers: {"Content-Type": "application/json"}
+            });
+
+            dispatch({
+                type: MAIL_ACTIONS.MAIL_SENT
             } as Action);
         } catch (error) {
             console.log(error);

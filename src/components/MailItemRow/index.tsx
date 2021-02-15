@@ -32,7 +32,7 @@ const MailRowItem = ({mailItem}: IMailRowProps) => {
             className="mail-row__container"
             onClick={() => onMailItemClick(mailItem)}
         >
-            <span className="name__label">{mailItem.name}</span>
+            <span className="name__label">{mailItem.from}</span>
             <span className="mail-edit__buttons">
                 <DeleteOutline onClick={(e) => onMailDeleteClick(e, mailItem.id)} />
             </span>

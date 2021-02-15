@@ -14,6 +14,12 @@ export interface IMailItem {
     id: number;
     mailType: MailType;
     from: string;
-    name: string;
+    subject: string;
+    message: string;
+}
+
+export interface IMailSendItem {
+    from: string;
+    message: string;
     subject: string;
 }

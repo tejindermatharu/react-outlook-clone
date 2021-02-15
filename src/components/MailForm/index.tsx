@@ -1,16 +1,23 @@
 import Button from "@material-ui/core/Button";
 import React, {useEffect, useRef} from "react";
 import {useForm} from "react-hook-form";
+import {useDispatch, useSelector} from "react-redux";
+import SendIcon from "@material-ui/icons/Send";
 import "./style.scss";
-
-type FormData = {
-    mailTo: string;
-    subject: string;
-};
+import {newMail} from "src/actions/mailActions";
+import {IMailSendItem} from "src/lib/types/mail";
+import {useHistory} from "react-router-dom";
 
 const MailForm = () => {
-    const {register, handleSubmit, watch, errors} = useForm<FormData>();
-    const onSubmit = (data: FormData) => console.log(data);
+    const {register, handleSubmit, watch, errors} = useForm<IMailSendItem>();
+    const dispatch = useDispatch();
+    const history = useHistory();
+
+    const onSubmit = (data: IMailSendItem) => {
+        dispatch(newMail(data));
+        history.push("/mail");
+    };
+
     const mailToRef = useRef<HTMLInputElement>();
 
     useEffect(() => {
@@ -24,7 +31,7 @@ const MailForm = () => {
                     <input className="header__buttton" type="submit" value="Send" />
                 </div>
                 <div className="mail-form__errors">
-                    {errors.mailTo && (
+                    {errors.from && (
                         <span className="errors__span">
                             This message must have at least one recipient.
                         </span>
@@ -36,7 +43,7 @@ const MailForm = () => {
                     </Button>
                     <input
                         className="mail-form__input"
-                        name="mailTo"
+                        name="from"
                         ref={(e) => {
                             register(e, {required: true});
                             mailToRef.current = e;
@@ -51,8 +58,8 @@ const MailForm = () => {
                     ref={register({required: false})}
                 />
                 <textarea
-                    className="mail__text-area mail-form__input"
-                    name="body"
+                    className="mail-form__input mail__text-area"
+                    name="message"
                     ref={register({required: false})}
                 />
             </form>

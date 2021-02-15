@@ -1,27 +1,52 @@
 {
-    "mail": [
-        {
-            "id": 1,
-            "mailType": 1,
-            "from": "support@playstation.com",
-            "name": "playstation",
-            "subject": "support ticket"
-        },
-        {
-            "id": 2,
-            "mailType": 1,
-            "from": "order-update@amazon.co.uk",
-            "name": "Amazon",
-            "subject": "amazon delivered"
-        },
-        {
-            "id": 3,
-            "mailType": 2,
-            "from": "order-update@amazon.co.uk",
-            "name": "donotreply-update@amazon.co.uk",
-            "subject": "Thanks you for you purchase"
-        }
-    ],
-    "comments": [{"id": 1, "body": "some comment", "postId": 1}],
-    "profile": {"name": "typicode"}
+  "mail": [
+    {
+      "id": 1,
+      "mailType": 1,
+      "from": "support@playstation.com",
+      "name": "playstation",
+      "subject": "support ticket",
+      "message": "Hello, this is your support ticket"
+    },
+    {
+      "id": 2,
+      "mailType": 1,
+      "from": "order-update@amazon.co.uk",
+      "name": "Amazon",
+      "subject": "amazon delivered",
+      "message": "Your parcel has been delivered"
+    },
+    {
+      "id": 3,
+      "mailType": 2,
+      "from": "order-update@amazon.co.uk",
+      "name": "donotreply-update@amazon.co.uk",
+      "subject": "Thanks you for you purchase",
+      "message": "Details of your purchase"
+    },
+    {
+      "from": "tejindermatharu@test.com",
+      "subject": "test subject",
+      "message": "\nHey this is a test\nTesting message",
+      "mailType": 2,
+      "id": 4
+    },
+    {
+      "from": "test@testing.com",
+      "subject": "test",
+      "message": "this is a test\ntesing\n",
+      "mailType": 2,
+      "id": 100
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
 }

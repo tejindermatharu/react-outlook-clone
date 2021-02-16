@@ -4,7 +4,8 @@ import {
     GLOBAL_ACTIONS,
     makeRequestSuccess,
     makeRequestPending,
-    AysncPayload
+    AysncPayload,
+    IGetState
 } from "./actionTypes";
 import {IMailItem, IMailSendItem, MailType} from "src/lib/types/mail";
 import {Action} from "redux";
@@ -46,22 +47,36 @@ export function mailActionCreator(mailType: MailType) {
 }
 
 export function newMail(mailSentItem: IMailSendItem) {
-    return async (dispatch) => {
+    return async (dispatch, getState: IGetState) => {
+        const {common} = getState();
+
         // dispatch({
         //     type: MAIL_ACTIONS.MAIL_RECEIVED,
         //     asyncPayload: makeRequestPending()
         // } as Action);
 
-        const mailItem: IMailItem = {...mailSentItem, mailType: MailType.SENT, id: 100};
+        const mailItem: IMailItem = {...mailSentItem, mailType: MailType.SENT, id: 101};
 
         try {
             await axios.post("http://localhost:4000/mail", JSON.stringify(mailItem), {
                 headers: {"Content-Type": "application/json"}
             });
 
-            dispatch({
-                type: MAIL_ACTIONS.MAIL_SENT
-            } as Action);
+            dispatch(mailActionCreator(common.selectedFolder));
+        } catch (error) {
+            console.log(error);
+        }
+    };
+}
+
+export function deleteMail(id: number) {
+    return async (dispatch, getState: IGetState) => {
+        const {common} = getState();
+
+        try {
+            await axios.delete("http://localhost:4000/mail/" + id);
+
+            dispatch(mailActionCreator(common.selectedFolder));
         } catch (error) {
             console.log(error);
         }

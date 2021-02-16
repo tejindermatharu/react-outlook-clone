@@ -1,3 +1,5 @@
+import {RootState} from "src/reducers";
+
 export const MAIL_ACTIONS = {
     SAMPLE_ACTION_TYPE: "SAMPLE_ACTION_TYPE",
     MAIL_RECEIVED: "MAIL_RECEIVED",
@@ -15,6 +17,10 @@ export const ERROR = "ERROR";
 export const INITIAL = "INITIAL";
 
 export type ASYNC_STATUS = typeof PENDING | typeof SUCCESS | typeof ERROR | typeof INITIAL;
+
+export interface IGetState {
+    (): RootState;
+}
 
 export interface IRequestPending {
     readonly status: typeof PENDING;

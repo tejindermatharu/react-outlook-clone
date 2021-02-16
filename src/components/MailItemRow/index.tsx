@@ -4,6 +4,7 @@ import {IMailItem} from "src/lib/types/mail";
 import {useHistory} from "react-router";
 import {useDispatch} from "react-redux";
 import {MAIL_ACTIONS} from "src/actions/actionTypes";
+import {deleteMail} from "src/actions/mailActions";
 
 interface IMailRowProps {
     mailItem: IMailItem;
@@ -19,6 +20,7 @@ const MailRowItem = ({mailItem}: IMailRowProps) => {
 
     const onMailDeleteClick = (e: any, id: number) => {
         e.stopPropagation();
+        dispatch(deleteMail(id));
     };
 
     const onMailItemClick = (mailItem: IMailItem) => {

@@ -3,20 +3,20 @@ import {IMailItem} from "./../lib/types/mail";
 import {PENDING, ERROR} from "./../actions/actionTypes";
 import {MailActions} from "src/actions/mailActions";
 
-type MailState = {
+interface IMailState {
     mailItems: IMailItem[];
     mailStatus: ASYNC_STATUS;
     selectedMail: IMailItem;
-};
+}
 
-const initialState: MailState = {
+const initialState: IMailState = {
     mailItems: null,
     selectedMail: null,
     mailStatus: INITIAL
 };
 
-function processMailAction(state: MailState, action: MailActions) {
-    let newState: MailState;
+function processMailAction(state: IMailState, action: MailActions) {
+    let newState: IMailState;
 
     switch (action.asyncPayload.status) {
         case SUCCESS:
@@ -36,7 +36,7 @@ function processMailAction(state: MailState, action: MailActions) {
 }
 
 export default function mailReducer(state = initialState, action) {
-    let newState: MailState;
+    let newState: IMailState;
     switch (action.type) {
         case MAIL_ACTIONS.MAIL_RECEIVED:
             return processMailAction(state, action);

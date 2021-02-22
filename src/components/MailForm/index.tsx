@@ -2,7 +2,6 @@ import Button from "@material-ui/core/Button";
 import React, {useEffect, useRef} from "react";
 import {useForm} from "react-hook-form";
 import {useDispatch, useSelector} from "react-redux";
-import SendIcon from "@material-ui/icons/Send";
 import "./style.scss";
 import {newMail} from "src/actions/mailActions";
 import {IMailSendItem} from "src/lib/types/mail";

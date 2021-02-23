@@ -18,6 +18,10 @@ export interface IMailItem {
     message: string;
 }
 
+export interface IMailItemRow extends IMailItem {
+    isChecked: boolean;
+}
+
 export interface IMailSendItem {
     from: string;
     message: string;

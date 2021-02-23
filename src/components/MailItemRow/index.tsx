@@ -1,19 +1,20 @@
 import React, {useEffect, useState} from "react";
 import DeleteOutline from "@material-ui/icons/DeleteOutline";
-import {IMailItem} from "src/lib/types/mail";
+import {IMailItem, IMailItemRow} from "src/lib/types/mail";
 import {useHistory} from "react-router";
 import {useDispatch} from "react-redux";
 import {MAIL_ACTIONS} from "src/actions/actionTypes";
 import {deleteMail} from "src/actions/mailActions";
 import CheckBox from "components/Sdk/CheckBox";
+import "./style.scss";
 
 interface IMailRowProps {
-    mailItem: IMailItem;
-    checked: boolean;
-    onChecked: (e: any, isChecked: boolean) => void;
+    mailItem: IMailItemRow;
+    mailRowChecked: boolean;
+    onChecked: (id: number) => void;
 }
 
-const MailRowItem = ({mailItem, checked, onChecked}: IMailRowProps) => {
+const MailRowItem = ({mailItem, mailRowChecked, onChecked}: IMailRowProps) => {
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -26,14 +27,14 @@ const MailRowItem = ({mailItem, checked, onChecked}: IMailRowProps) => {
         dispatch(deleteMail(id));
     };
 
-    const onMailItemClick = (mailItem: IMailItem) => {
+    const onMailItemClick = (mailItem: IMailItemRow) => {
         dispatch({type: MAIL_ACTIONS.SELECTED_MAIL, payload: mailItem});
         history.push("/maildetail");
     };
 
-    const onCheckClicked = (e, isChecked: boolean) => {
+    const onCheckClicked = (e, id: number) => {
         e.stopPropagation();
-        onChecked(e, isChecked);
+        onChecked(id);
     };
 
     return (
@@ -42,7 +43,11 @@ const MailRowItem = ({mailItem, checked, onChecked}: IMailRowProps) => {
             className="mail-row__container"
             onClick={() => onMailItemClick(mailItem)}
         >
-            <CheckBox checked={checked} onChecked={onCheckClicked} />
+            <CheckBox
+                checked={mailItem.isChecked}
+                className={mailRowChecked ? "" : "mail-row__checkbox"}
+                onChecked={(e) => onCheckClicked(e, mailItem.id)}
+            />
             <span className="name__label">{mailItem.from}</span>
             <span className="mail-edit__buttons">
                 <DeleteOutline onClick={(e) => onMailDeleteClick(e, mailItem.id)} />
@@ -52,4 +57,4 @@ const MailRowItem = ({mailItem, checked, onChecked}: IMailRowProps) => {
     );
 };
 
-export default MailRowItem;
+export default React.memo(MailRowItem);

@@ -16,6 +16,10 @@ export const SUCCESS = "SUCCESS";
 export const ERROR = "ERROR";
 export const INITIAL = "INITIAL";
 
+export function address(url: string): string {
+    return `https://localhost:44371/${url}`;
+}
+
 export type ASYNC_STATUS = typeof PENDING | typeof SUCCESS | typeof ERROR | typeof INITIAL;
 
 export interface IGetState {

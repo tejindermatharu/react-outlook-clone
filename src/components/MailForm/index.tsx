@@ -58,7 +58,7 @@ const MailForm = () => {
                 />
                 <textarea
                     className="mail-form__input mail__text-area"
-                    name="message"
+                    name="body"
                     ref={register({required: false})}
                 />
             </form>

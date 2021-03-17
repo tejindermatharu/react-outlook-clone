@@ -5,7 +5,8 @@ import {
     makeRequestSuccess,
     makeRequestPending,
     AysncPayload,
-    IGetState
+    IGetState,
+    address
 } from "./actionTypes";
 import {IMailItem, IMailSendItem, MailType} from "src/lib/types/mail";
 import {Action} from "redux";
@@ -32,9 +33,8 @@ export function mailActionCreator(mailType: MailType) {
             asyncPayload: makeRequestPending()
         } as Action);
         try {
-            const mail = await axios.get("http://localhost:4000/mail");
-            const data =
-                mail?.data.length > 0 ? mail?.data.filter((m) => m.mailType === mailType) : [];
+            const mail = await axios.get(address(`api/mail/${mailType}`));
+            const data = mail?.data.length > 0 ? mail?.data : [];
 
             dispatch({
                 type: MAIL_ACTIONS.MAIL_RECEIVED,
@@ -55,10 +55,10 @@ export function newMail(mailSentItem: IMailSendItem) {
         //     asyncPayload: makeRequestPending()
         // } as Action);
 
-        const mailItem: IMailItem = {...mailSentItem, mailType: MailType.SENT, id: 101};
+        const mailItem: IMailItem = {...mailSentItem, mailType: MailType.SENT};
 
         try {
-            await axios.post("http://localhost:4000/mail", JSON.stringify(mailItem), {
+            await axios.post(address("api/mail"), JSON.stringify(mailItem), {
                 headers: {"Content-Type": "application/json"}
             });
 
@@ -74,7 +74,23 @@ export function deleteMail(id: number) {
         const {common} = getState();
 
         try {
-            await axios.delete("http://localhost:4000/mail/" + id);
+            await axios.delete(address(`api/mail/${id}`));
+
+            dispatch(mailActionCreator(common.selectedFolder));
+        } catch (error) {
+            console.log(error);
+        }
+    };
+}
+
+export function deleteMails(ids: number[]) {
+    return async (dispatch, getState: IGetState) => {
+        const {common} = getState();
+
+        try {
+            await axios.put(address("api/mail"), JSON.stringify(ids), {
+                headers: {"Content-Type": "application/json"}
+            });
 
             dispatch(mailActionCreator(common.selectedFolder));
         } catch (error) {

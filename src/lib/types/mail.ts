@@ -11,11 +11,11 @@ export const MailTypeMap = new Map<MailType, {name: string}>([
 ]);
 
 export interface IMailItem {
-    id: number;
+    id?: number;
     mailType: MailType;
     from: string;
     subject: string;
-    message: string;
+    body: string;
 }
 
 export interface IMailItemRow extends IMailItem {
@@ -24,6 +24,6 @@ export interface IMailItemRow extends IMailItem {
 
 export interface IMailSendItem {
     from: string;
-    message: string;
+    body: string;
     subject: string;
 }

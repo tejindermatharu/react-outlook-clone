@@ -21,6 +21,17 @@
         font-weight: 300;
         font-size: 20px;
     }
+
+    .mail__button {
+        position: absolute;
+        top: 7px;
+        cursor: pointer;
+
+        span {
+            position: relative;
+            bottom: 6px;
+        }
+    }
 }
 
 .mail__list {

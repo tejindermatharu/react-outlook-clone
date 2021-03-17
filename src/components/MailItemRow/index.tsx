@@ -1,10 +1,9 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import DeleteOutline from "@material-ui/icons/DeleteOutline";
-import {IMailItem, IMailItemRow} from "src/lib/types/mail";
+import {IMailItemRow} from "src/lib/types/mail";
 import {useHistory} from "react-router";
 import {useDispatch} from "react-redux";
 import {MAIL_ACTIONS} from "src/actions/actionTypes";
-import {deleteMail} from "src/actions/mailActions";
 import CheckBox from "components/Sdk/CheckBox";
 import "./style.scss";
 
@@ -12,9 +11,10 @@ interface IMailRowProps {
     mailItem: IMailItemRow;
     mailRowChecked: boolean;
     onChecked: (id: number) => void;
+    onDeleteMail: (id: number[]) => void;
 }
 
-const MailRowItem = ({mailItem, mailRowChecked, onChecked}: IMailRowProps) => {
+const MailRowItem = ({mailItem, mailRowChecked, onChecked, onDeleteMail}: IMailRowProps) => {
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -24,7 +24,7 @@ const MailRowItem = ({mailItem, mailRowChecked, onChecked}: IMailRowProps) => {
 
     const onMailDeleteClick = (e: any, id: number) => {
         e.stopPropagation();
-        dispatch(deleteMail(id));
+        onDeleteMail([id]);
     };
 
     const onMailItemClick = (mailItem: IMailItemRow) => {
